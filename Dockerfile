@@ -7,6 +7,10 @@ COPY package.json package-lock.json ./
 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
+##Added the Python install
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
+
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 RUN npm i && npm install --save-dev --unsafe-perm node-sass && mkdir /ng-app && cp -R ./node_modules ./ng-app
 
