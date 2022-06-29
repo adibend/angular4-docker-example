@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: adibendangulardockerexample 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adibendangulardockerexample
+  template:
+    metadata:
+      labels:
+        app: adibendangulardockerexample 
+    spec:
+      containers:
+        - name: adibendangulardockerexample 
+          image: acrsandboxtest01.azurecr.io/adibendangulardockerexample
+          ports:
+          - containerPort: 80
